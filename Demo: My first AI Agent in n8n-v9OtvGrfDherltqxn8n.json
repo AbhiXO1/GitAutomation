@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-11-27T05:29:22.554Z",
+  "updatedAt": "2025-12-04T10:01:00.311Z",
   "createdAt": "2025-11-25T17:39:56.189Z",
   "id": "v9OtvGrfDherltqx",
   "name": "Demo: My first AI Agent in n8n",
@@ -59,20 +59,17 @@
     },
     {
       "parameters": {
-        "rule": {
-          "interval": [
-            {}
-          ]
-        }
+        "options": {}
       },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
       "position": [
-        32,
-        80
+        288,
+        32
       ],
-      "id": "b4851b86-7357-4926-84da-6e5d801f9fbd",
-      "name": "Schedule Trigger"
+      "id": "a7301171-ff67-44bf-b7f3-2f1f44b65364",
+      "name": "When chat message received",
+      "webhookId": "05c503f3-1c34-4f66-adaa-359c7da73e5f"
     }
   ],
   "connections": {
@@ -87,7 +84,7 @@
         ]
       ]
     },
-    "Schedule Trigger": {
+    "When chat message received": {
       "main": [
         [
           {
@@ -115,8 +112,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "64f6b79a-770a-4641-923d-fbeac7877768",
-  "versionCounter": 27,
+  "versionId": "21e08450-e291-436b-af4f-af0677f1c727",
+  "versionCounter": 32,
   "triggerCount": 1,
   "shared": [
     {
@@ -140,7 +137,7 @@
             "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
             "projectId": "RKQ6wdrHJatWAgj3",
             "user": {
-              "updatedAt": "2025-11-27T05:16:03.071Z",
+              "updatedAt": "2025-12-05T06:20:38.561Z",
               "createdAt": "2025-11-25T17:22:51.580Z",
               "id": "995e2903-f591-4135-bce6-1d56da5076bd",
               "email": "abhishek.shetty@brillio.com",
@@ -155,11 +152,16 @@
                 "userActivated": true,
                 "easyAIWorkflowOnboarded": true,
                 "firstSuccessfulWorkflowId": "7Q6vvn8k2umvQmGO",
-                "userActivatedAt": 1764136317576
+                "userActivatedAt": 1764136317576,
+                "npsSurvey": {
+                  "waitingForResponse": true,
+                  "ignoredCount": 1,
+                  "lastShownAt": 1764669283018
+                }
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-11-27",
+              "lastActiveAt": "2025-12-05",
               "isPending": false
             }
           }
