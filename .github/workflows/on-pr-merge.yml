@@ -12,12 +12,25 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      - name: Get changed files
+        id: files
+        run: |
+          FILES=$(gh pr diff ${{ github.event.number }} --name-only | jq -R -s -c 'split("\n")[:-1]')
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Call n8n webhook
         run: |
           curl -X POST "$N8N_WEBHOOK_URL" \
             -H "Authorization: Bearer $N8N_WEBHOOK_TOKEN" \
             -H "Content-Type: application/json" \
-            -d '{"repo":"${{ github.repository }}","pr":${{ github.event.number }}}'
+            -d '{
+              "repo": "${{ github.repository }}",
+              "pr": ${{ github.event.number }},
+              "files": ${{ steps.files.outputs.files }}
+            }'
         env:
           N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
           N8N_WEBHOOK_TOKEN: ${{ secrets.N8N_WEBHOOK_TOKEN }}
+
