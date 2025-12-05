@@ -113,7 +113,7 @@
   },
   "pinData": {},
   "versionId": "21e08450-e291-436b-af4f-af0677f1c727",
-  "versionCounter": 32,
+  "versionCounter": 33,
   "triggerCount": 1,
   "shared": [
     {
@@ -137,7 +137,7 @@
             "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
             "projectId": "RKQ6wdrHJatWAgj3",
             "user": {
-              "updatedAt": "2025-12-05T06:20:38.561Z",
+              "updatedAt": "2025-12-05T16:18:26.658Z",
               "createdAt": "2025-11-25T17:22:51.580Z",
               "id": "995e2903-f591-4135-bce6-1d56da5076bd",
               "email": "abhishek.shetty@brillio.com",
