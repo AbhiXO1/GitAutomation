@@ -1,0 +1,96 @@
+{
+  "updatedAt": "2025-12-08T10:52:36.914Z",
+  "createdAt": "2025-12-05T16:25:18.759Z",
+  "id": "iMOrDlck0sbYwRIX",
+  "name": "My workflow 2",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7775888c-7bc6-46ec-8b98-2dda7698c366",
+      "name": "When chat message received",
+      "webhookId": "1d3c1797-5b96-4699-9baa-dba1f8aa0f27"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "93c18547-3dc1-4683-83e8-81d15d88c5fd",
+  "versionCounter": 10,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2025-12-05T16:25:18.759Z",
+      "createdAt": "2025-12-05T16:25:18.759Z",
+      "role": "workflow:owner",
+      "workflowId": "iMOrDlck0sbYwRIX",
+      "projectId": "RKQ6wdrHJatWAgj3",
+      "project": {
+        "updatedAt": "2025-11-25T17:23:26.493Z",
+        "createdAt": "2025-11-25T17:22:52.253Z",
+        "id": "RKQ6wdrHJatWAgj3",
+        "name": "Abhishek Shetty <abhishek.shetty@brillio.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "updatedAt": "2025-11-25T17:22:52.253Z",
+            "createdAt": "2025-11-25T17:22:52.253Z",
+            "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
+            "projectId": "RKQ6wdrHJatWAgj3",
+            "user": {
+              "updatedAt": "2025-12-08T06:16:27.520Z",
+              "createdAt": "2025-11-25T17:22:51.580Z",
+              "id": "995e2903-f591-4135-bce6-1d56da5076bd",
+              "email": "abhishek.shetty@brillio.com",
+              "firstName": "Abhishek",
+              "lastName": "Shetty",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-11-25T17:23:37.714Z",
+                "personalization_survey_n8n_version": "1.119.2"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "7Q6vvn8k2umvQmGO",
+                "userActivatedAt": 1764136317576,
+                "npsSurvey": {
+                  "waitingForResponse": true,
+                  "ignoredCount": 1,
+                  "lastShownAt": 1764669283018
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-12-08",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": [
+    {
+      "updatedAt": "2025-12-08T10:52:35.052Z",
+      "createdAt": "2025-12-08T10:52:35.052Z",
+      "id": "GXiWET72sdqlFfZJ",
+      "name": "Testing"
+    }
+  ]
+}
