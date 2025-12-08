@@ -1,53 +1,11 @@
 {
-  "updatedAt": "2025-12-08T06:43:17.944Z",
+  "updatedAt": "2025-12-08T06:56:33.244Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
   "active": true,
   "isArchived": false,
   "nodes": [
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -16,
-        -192
-      ],
-      "id": "ac132884-b6ef-4b42-ae4a-311f3658aade",
-      "name": "When clicking ‘Execute workflow’",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "resource": "file",
-        "operation": "list",
-        "owner": {
-          "__rl": true,
-          "value": "AbhiXO1",
-          "mode": "list",
-          "cachedResultName": "AbhiXO1",
-          "cachedResultUrl": "https://github.com/AbhiXO1"
-        },
-        "repository": {
-          "__rl": true,
-          "value": "Architecture-Documents",
-          "mode": "list",
-          "cachedResultName": "Architecture-Documents",
-          "cachedResultUrl": "https://github.com/AbhiXO1/Architecture-Documents"
-        }
-      },
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1.1,
-      "position": [
-        192,
-        -192
-      ],
-      "id": "f33f9b98-be35-4751-afaa-bb91861d53b9",
-      "name": "List files",
-      "webhookId": "5c34c9f6-44f4-4418-bc4d-4381b5cd5a5b",
-      "disabled": true
-    },
     {
       "parameters": {
         "mode": "insert",
@@ -86,23 +44,6 @@
       ],
       "id": "609da7f6-1168-4b14-b9ac-b952a4ce7048",
       "name": "AI Agent"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1536,
-        736
-      ],
-      "id": "3290002b-1ba9-450a-ad81-e4a88adc51c7",
-      "name": "Embeddings Google Gemini",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "rFQBfZK6zSF6Hr0O",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
     },
     {
       "parameters": {
@@ -175,20 +116,6 @@
     },
     {
       "parameters": {
-        "dataType": "binary",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
-      "typeVersion": 1.1,
-      "position": [
-        1024,
-        816
-      ],
-      "id": "6b07b202-92aa-47b4-b8b2-a91a33afc730",
-      "name": "Default Data Loader"
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
@@ -221,47 +148,9 @@
           "name": "Groq account"
         }
       }
-    },
-    {
-      "parameters": {
-        "url": "https://docs.cloud.google.com/architecture/deployment-archetypes",
-        "options": {
-          "allowUnauthorizedCerts": true
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        528,
-        416
-      ],
-      "id": "c9eec60e-8110-4f99-abf7-927053e6d25c",
-      "name": "HTTP Request"
     }
   ],
   "connections": {
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "List files",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Embeddings Google Gemini": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Pinecone Vector Store2",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Pinecone Vector Store2": {
       "ai_tool": [
         [
@@ -295,17 +184,6 @@
         ]
       ]
     },
-    "Default Data Loader": {
-      "ai_document": [
-        [
-          {
-            "node": "Pinecone Vector Store",
-            "type": "ai_document",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "When chat message received": {
       "main": [
         []
@@ -321,21 +199,18 @@
           }
         ]
       ]
-    },
-    "HTTP Request": {
-      "main": [
-        []
-      ]
     }
   },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {},
-  "versionId": "69b6a439-1d17-48cb-ae48-0382ba4e449e",
-  "versionCounter": 4,
+  "versionId": "4aeb9519-1a98-48e5-a6f9-6b332e35b674",
+  "versionCounter": 6,
   "triggerCount": 1,
   "shared": [
     {
