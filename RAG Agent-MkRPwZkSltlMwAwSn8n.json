@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T07:13:28.666Z",
+  "updatedAt": "2025-12-08T07:28:10.819Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
@@ -18,33 +18,6 @@
       ],
       "id": "609da7f6-1168-4b14-b9ac-b952a4ce7048",
       "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "mode": "retrieve-as-tool",
-        "toolDescription": "You are responsible for querying and answering. Your job is to browse through RAG ",
-        "pineconeIndex": {
-          "__rl": true,
-          "value": "abhishek1",
-          "mode": "list",
-          "cachedResultName": "abhishek1"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
-      "typeVersion": 1.3,
-      "position": [
-        1536,
-        592
-      ],
-      "id": "19133333-6f05-41dc-a367-ee9ea878dc13",
-      "name": "Pinecone Vector Store2",
-      "credentials": {
-        "pineconeApi": {
-          "id": "RfLEVuAZV0PaZ3HE",
-          "name": "PineconeApi account"
-        }
-      }
     },
     {
       "parameters": {
@@ -82,37 +55,9 @@
       ],
       "id": "c4260fa0-652f-4453-85fc-eae057153d81",
       "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1632,
-        800
-      ],
-      "id": "1429acbb-08c6-457f-a190-a248bceb27a7",
-      "name": "Embeddings Google Gemini",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "rFQBfZK6zSF6Hr0O",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
     }
   ],
   "connections": {
-    "Pinecone Vector Store2": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Groq Chat Model": {
       "ai_languageModel": [
         [
@@ -134,17 +79,6 @@
           }
         ]
       ]
-    },
-    "Embeddings Google Gemini": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Pinecone Vector Store2",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "settings": {
@@ -159,8 +93,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "cdc32331-b97b-478c-8544-be46bae7a9a3",
-  "versionCounter": 14,
+  "versionId": "7fbc09de-15a1-43f4-83ea-fc5708965ed3",
+  "versionCounter": 16,
   "triggerCount": 1,
   "shared": [
     {
