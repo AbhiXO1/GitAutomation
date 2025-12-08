@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T07:50:37.103Z",
+  "updatedAt": "2025-12-08T09:30:22.093Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
@@ -55,28 +55,6 @@
       ],
       "id": "c4260fa0-652f-4453-85fc-eae057153d81",
       "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        1392,
-        736
-      ],
-      "id": "4d280f6c-8f16-4cb5-b988-27f4c9e8aea8",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolCode",
-      "typeVersion": 1.3,
-      "position": [
-        1440,
-        640
-      ],
-      "id": "aba4ff30-ba0f-4ffa-9707-7ba39ef9600f",
-      "name": "Code Tool"
     }
   ],
   "connections": {
@@ -101,28 +79,6 @@
           }
         ]
       ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code Tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "settings": {
@@ -137,8 +93,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "f2ffe918-9940-41b5-a480-61dd866c7de5",
-  "versionCounter": 22,
+  "versionId": "43d64866-d02b-463b-91cd-9e8f3160c96e",
+  "versionCounter": 24,
   "triggerCount": 1,
   "shared": [
     {
