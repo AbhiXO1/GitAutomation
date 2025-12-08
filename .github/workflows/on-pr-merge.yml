@@ -12,13 +12,21 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git diff
+
       - name: Get changed files
         id: files
         run: |
-          FILES=$(gh pr diff ${{ github.event.number }} --name-only | jq -R -s -c 'split("\n")[:-1]')
+          # Get files changed in this merge commit (HEAD vs first parent)
+          FILES=$(git diff --name-only HEAD~1 HEAD | jq -R -s -c 'split("\n")[:-1]')
           echo "files=$FILES" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ github.token }}
+
+      - name: Debug output (remove after testing)
+        run: |
+          echo "Changed files: ${{ steps.files.outputs.files }}"
 
       - name: Call n8n webhook
         run: |
@@ -33,4 +41,3 @@ jobs:
         env:
           N8N_WEBHOOK_URL: ${{ secrets.N8N_WEBHOOK_URL }}
           N8N_WEBHOOK_TOKEN: ${{ secrets.N8N_WEBHOOK_TOKEN }}
-
