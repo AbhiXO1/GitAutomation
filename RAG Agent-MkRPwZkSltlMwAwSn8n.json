@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T07:05:17.536Z",
+  "updatedAt": "2025-12-08T07:13:28.666Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
@@ -48,48 +48,6 @@
     },
     {
       "parameters": {
-        "formTitle": "submit ur data",
-        "formDescription": "ur Rag file",
-        "formFields": {
-          "values": [
-            {
-              "fieldLabel": "Your pdf file",
-              "fieldType": "file",
-              "acceptFileTypes": ".pdf"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.formTrigger",
-      "typeVersion": 2.3,
-      "position": [
-        704,
-        624
-      ],
-      "id": "80134208-3b92-4e99-bc7a-fbb97cf11b6b",
-      "name": "On form submission",
-      "webhookId": "8fb9dd41-dfef-4887-b1e9-9fcf42f27c23"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        832,
-        832
-      ],
-      "id": "f3176082-9566-4136-aa63-af5101c16cfe",
-      "name": "Embeddings Google Gemini1",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "rFQBfZK6zSF6Hr0O",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "model": "llama-3.3-70b-versatile",
         "options": {}
       },
@@ -107,6 +65,40 @@
           "name": "Groq account"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1008,
+        448
+      ],
+      "id": "c4260fa0-652f-4453-85fc-eae057153d81",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1632,
+        800
+      ],
+      "id": "1429acbb-08c6-457f-a190-a248bceb27a7",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rFQBfZK6zSF6Hr0O",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     }
   ],
   "connections": {
@@ -121,16 +113,6 @@
         ]
       ]
     },
-    "On form submission": {
-      "main": [
-        []
-      ]
-    },
-    "Embeddings Google Gemini1": {
-      "ai_embedding": [
-        []
-      ]
-    },
     "Groq Chat Model": {
       "ai_languageModel": [
         [
@@ -141,18 +123,44 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "meta": {
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "78371dfd-c8c2-4728-9e86-9b5cedf96409",
-  "versionCounter": 8,
+  "versionId": "cdc32331-b97b-478c-8544-be46bae7a9a3",
+  "versionCounter": 14,
   "triggerCount": 1,
   "shared": [
     {
