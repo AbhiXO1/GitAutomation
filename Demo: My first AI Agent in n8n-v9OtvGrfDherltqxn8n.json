@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-04T10:01:00.311Z",
+  "updatedAt": "2025-12-08T06:19:04.391Z",
   "createdAt": "2025-11-25T17:39:56.189Z",
   "id": "v9OtvGrfDherltqx",
   "name": "Demo: My first AI Agent in n8n",
@@ -45,8 +45,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        560,
-        272
+        496,
+        240
       ],
       "id": "b201b05e-3b52-4349-bfb0-c47f42ac7146",
       "name": "Groq Chat Model",
@@ -70,6 +70,47 @@
       "id": "a7301171-ff67-44bf-b7f3-2f1f44b65364",
       "name": "When chat message received",
       "webhookId": "05c503f3-1c34-4f66-adaa-359c7da73e5f"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        656,
+        288
+      ],
+      "id": "e57df53b-1743-488e-a773-1b1ce0225342",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-flash"
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGeminiTool",
+      "typeVersion": 1,
+      "position": [
+        848,
+        224
+      ],
+      "id": "e1ec9ea7-c7fe-4326-be94-c7e044a1c672",
+      "name": "Message a model in Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rFQBfZK6zSF6Hr0O",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     }
   ],
   "connections": {
@@ -94,6 +135,28 @@
           }
         ]
       ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model in Google Gemini": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -112,8 +175,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "21e08450-e291-436b-af4f-af0677f1c727",
-  "versionCounter": 33,
+  "versionId": "36af27fc-7c9e-4510-b5cf-67bb7c1ffdea",
+  "versionCounter": 36,
   "triggerCount": 1,
   "shared": [
     {
@@ -137,7 +200,7 @@
             "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
             "projectId": "RKQ6wdrHJatWAgj3",
             "user": {
-              "updatedAt": "2025-12-05T16:18:26.658Z",
+              "updatedAt": "2025-12-08T06:16:27.520Z",
               "createdAt": "2025-11-25T17:22:51.580Z",
               "id": "995e2903-f591-4135-bce6-1d56da5076bd",
               "email": "abhishek.shetty@brillio.com",
@@ -161,7 +224,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-12-05",
+              "lastActiveAt": "2025-12-08",
               "isPending": false
             }
           }
