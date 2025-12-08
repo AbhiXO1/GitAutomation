@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T07:34:05.133Z",
+  "updatedAt": "2025-12-08T07:42:17.459Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
@@ -66,6 +66,17 @@
       ],
       "id": "4d280f6c-8f16-4cb5-b988-27f4c9e8aea8",
       "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1520,
+        624
+      ],
+      "id": "ebdb4119-934f-47d5-a180-2b2a7e43d9cb",
+      "name": "Call n8n Workflow Tool"
     }
   ],
   "connections": {
@@ -101,6 +112,17 @@
           }
         ]
       ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -115,8 +137,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "af99ce3e-81b7-4a4a-9665-c2ca768a7836",
-  "versionCounter": 18,
+  "versionId": "77164d5a-46d6-4880-b1a6-e8f72bfacbde",
+  "versionCounter": 20,
   "triggerCount": 1,
   "shared": [
     {
