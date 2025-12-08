@@ -1,0 +1,822 @@
+{
+  "updatedAt": "2025-12-08T09:22:13.668Z",
+  "createdAt": "2025-11-26T12:35:14.428Z",
+  "id": "fQMbML8I55XCwnYZ",
+  "name": "GithubCommit",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "toJson",
+        "binaryPropertyName": "=data",
+        "options": {
+          "format": true
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -2272,
+        80
+      ],
+      "id": "75f17a48-54f8-4d5e-96e6-982dd098e479",
+      "name": "JSON File"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "github_file_names",
+        "include": "specifiedFields",
+        "fieldsToInclude": "path",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        64,
+        16
+      ],
+      "id": "c0a4caab-9837-411c-af72-863404c2e4ff",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3d5865ee-ed14-4e61-9c2e-e0dbe2754029",
+              "leftValue": "={{ $('Aggregate').item.json.github_file_names }}",
+              "rightValue": "={{ $json.github_file_name }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        784,
+        16
+      ],
+      "id": "a6f0b94d-4e0b-4793-be46-d6659eb8ddb3",
+      "name": "found in github"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "AbhiXO1",
+          "mode": "list",
+          "cachedResultName": "AbhiXO1",
+          "cachedResultUrl": "https://github.com/AbhiXO1"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "GitAutomation",
+          "mode": "list",
+          "cachedResultName": "GitAutomation",
+          "cachedResultUrl": "https://github.com/AbhiXO1/GitAutomation"
+        },
+        "filePath": "={{ $('workfow_id').item.json.github_file_name }}",
+        "fileContent": "={{ $('Code in JavaScript').item.json.fileContent }}",
+        "commitMessage": "={{ $('workfow_id').item.json.Name }}-{{ $('Get a workflow1By1').item.json.id }}-{{ $('Get a workflow1By1').item.json.updatedAt }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "dev"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1936,
+        544
+      ],
+      "id": "7732e5d9-df1a-4ac2-9fec-667f2d5d2406",
+      "name": "Create a file",
+      "webhookId": "6e80c736-77cf-470b-8afd-d6075d6a12d8",
+      "credentials": {
+        "githubApi": {
+          "id": "tmEy8qBBPefiL0AR",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "AbhiXO1",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "GitAutomation",
+          "mode": "list",
+          "cachedResultName": "GitAutomation",
+          "cachedResultUrl": "https://github.com/AbhiXO1/GitAutomation"
+        },
+        "filePath": "={{ $('workfow_id').item.json.github_file_name }}",
+        "fileContent": "={{ $('Code in JavaScript').item.json.fileContent }}",
+        "commitMessage": "={{ $('workfow_id').item.json.Name }}-{{ $('workfow_id').item.json.Workflow_id }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "dev"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        2384,
+        -944
+      ],
+      "id": "69f38403-7750-46af-b004-82c502145562",
+      "name": "Edit a file",
+      "webhookId": "312ae936-7483-438a-8ca4-5ab6a7e8b5d3",
+      "credentials": {
+        "githubApi": {
+          "id": "tmEy8qBBPefiL0AR",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "57d34437-a010-4c2a-b4e2-2bfede85a31e",
+              "name": "Name",
+              "value": "={{ $('Get a workflow1By1').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "8edea4b4-ae31-4926-a643-e5b22d34a425",
+              "name": "Workflow_id",
+              "value": "={{ $('Get a workflow1By1').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "77a9ae8b-25a3-4823-8999-9ad0ad40b8c0",
+              "name": "github_file_name",
+              "value": "={{ $('Get a workflow1By1').item.json.name }}-{{ $('Get a workflow1By1').item.json.id }}n8n.json",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        16
+      ],
+      "id": "399280cf-6139-4c35-9bd4-129262b61870",
+      "name": "workfow_id"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -3904,
+        384
+      ],
+      "id": "1063738d-f67c-4ace-a59b-02d81d669209",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "filters": {
+          "activeWorkflows": true
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -3520,
+        384
+      ],
+      "id": "bc0097d5-f7b1-4665-8cce-2d35a0927301",
+      "name": "Get many workflows",
+      "credentials": {
+        "n8nApi": {
+          "id": "QR5zfsrbYyqzys2o",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "={{ $node[\"Loop Over Items\"].context[\"done\"] }}"
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -2992,
+        384
+      ],
+      "id": "9d8e3c51-176f-40a4-9d51-3f89535b016e",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "# Loop over input items and add a new field called 'myNewField' to the JSON of each one\n# for item in _input.all():\n#   item.json.myNewField = 1\n# return _input.all()\n\nimport base64\nimport json\n\n\nbinary_data = _input.first().json.data\n\nprint(binary_data)\n\n\nreturn binary_data[0]\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1760,
+        80
+      ],
+      "id": "fa62ff0d-e46f-4eed-bfc6-45ddea1a419b",
+      "name": "Code in Python (Beta)"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -2000,
+        80
+      ],
+      "id": "60131199-6e8d-43a4-b21d-0a4c4b9a6626",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.item.json;\nconst jsonString = JSON.stringify(data, null, 2);\nconst encoded = Buffer.from(jsonString).toString('base64');\nreturn [{ json: { fileContent: encoded } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1552,
+        80
+      ],
+      "id": "6fd27239-63c6-40c9-a7f8-0e51ccf5bf06",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items[0].json.tree\n  .filter(item => item.type === 'blob')  // Only files\n  .map(item => ({ json: {name:item.name, path: item.path, size: item.size, url: item.url } }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        16
+      ],
+      "id": "5ae7c837-2e34-4419-80f8-c7dd9596b9a1",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/AbhiXO1/GitAutomation/git/trees/dev?recursive=1",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1056,
+        16
+      ],
+      "id": "2620ff18-b614-475a-97fb-d1846b757ad2",
+      "name": "GithubListAllFiles",
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "tmEy8qBBPefiL0AR",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 📅 SCHEDULE TRIGGER\n**• Runs every X minutes (edit cron below)** \n**• Change: rule → minutes/hours/days**\n**• Gets ALL active n8n workflows**",
+        "height": 256,
+        "width": 336,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -4032,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "71fe715a-bd1d-4ac1-bc50-a179b5a429e7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## 🔍 GETS ALL ACTIVE WORKFLOWS \n**• Filters: activeWorkflows = true** \n**• Credential: n8nApi (needs admin access)**\n\n",
+        "height": 256,
+        "width": 352,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3632,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "47a93f05-f379-4c2d-94cc-d90471cc9698",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## ⚙️ PREPARES WORKFLOW DATA\n**1. Name: {{ $('Get a workflow1').item.json.name }}**\n**2. Workflow_id: {{ $('Get a workflow1').item.json.id }}**\n**3. github_file_name: \"{{name}}-{{id}}n8n.json\"**\n✅ Format: \"Demo My Agent-v9OtvGrfDherltqxn8n.json\"",
+        "height": 560,
+        "width": 736,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -64,
+        -336
+      ],
+      "typeVersion": 1,
+      "id": "15aede92-6d4d-4ab5-8e7b-f62b7a6f6bc9",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/AbhiXO1/GitAutomation/contents/{{ $json.github_file_name }}?ref=dev",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1536,
+        -672
+      ],
+      "id": "b1c21a0f-bd73-46c3-814b-c148e29a4f7e",
+      "name": "GitHubGetAFile",
+      "credentials": {
+        "githubApi": {
+          "id": "tmEy8qBBPefiL0AR",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "workflowId": {
+          "__rl": true,
+          "value": "={{ $json[\"id\"] }}",
+          "mode": "id"
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -2512,
+        80
+      ],
+      "id": "c720bf34-ae2b-44e6-ba97-73ff7e2d0315",
+      "name": "Get a workflow1By1",
+      "credentials": {
+        "n8nApi": {
+          "id": "QR5zfsrbYyqzys2o",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 📂 LISTS FILES IN GITHUB REPO\n**Repo: AbhiXO1/GitAutomation (CHANGE 👇)\nOwner: AbhiXO1 → YOUR USERNAME\nRepo: GitAutomation → YOUR REPO NAME\nBranch: dev (default)** ",
+        "height": 560,
+        "width": 992,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1200,
+        -336
+      ],
+      "typeVersion": 1,
+      "id": "1cffbdd6-3b4f-4881-a249-818e73156abf",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## 💾 UPDATES FILE ON GITHUB\n**✅ Edit: Needs SHA from \"Get a file\"\nRepo: AbhiXO1/GitAutomation\nBranch: dev ← CHANGE IF NEEDED\nCredential: GitHub API (repo scope required)*\n",
+        "height": 720,
+        "width": 1136,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1488,
+        -1120
+      ],
+      "typeVersion": 1,
+      "id": "3af3fa17-7240-41b7-8391-fe8dcc689d2e",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## 💾 UPDATES/CREATES FILE ON GITHUB\n**✅ Edit: Needs SHA from \"Get a file\"\n✅ Create: New files only\nRepo: AbhiXO1/GitAutomation\nBranch: dev ← CHANGE IF NEEDED\nCredential: GitHub API (repo scope required)**\n",
+        "height": 752,
+        "width": 1152,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1536,
+        160
+      ],
+      "typeVersion": 1,
+      "id": "efcb42dd-726c-4e49-988d-375b6f7f3935",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "**🔄 LOOP: Get → Convert → Extract → Format JSON**\n\n**GET A WORKFLOW1**  \n├── Gets single workflow JSON by ID  \n├── Credential: n8nApi (admin access)  \n└── Output: Raw workflow data  \n\n**JSON FILE** (ConvertToFile)  \n├── Converts JSON → Binary file  \n├── BinaryPropertyName: =data  \n└── Prepares for extraction  \n\n**EXTRACT FROM FILE**  \n├── fromJson operation  \n├── Converts binary back to JSON  \n└── Cleans workflow structure  \n\n**CODE IN JS** (Format)  \n└── Base64 encodes for GitHub  \n└── Code: JSON.stringify(data, null, 2)  \n\n✅ **PIPELINE OUTPUT: github-ready base64 JSON**  \n\n",
+        "height": 592,
+        "width": 1184,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2576,
+        -288
+      ],
+      "typeVersion": 1,
+      "id": "0ee0ddb2-3f36-4cdc-9eaf-9deda01ab5c8",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba9f4899-f074-4d84-aee2-e59d5d458e0d",
+              "leftValue": "={{ $json.content.replace(/\\n/g, '') }}",
+              "rightValue": "={{ $('Code in JavaScript').item.json.fileContent }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1872,
+        -672
+      ],
+      "id": "fc00a915-3e01-4404-88f4-90bce479bb3f",
+      "name": "File Content is Changed"
+    }
+  ],
+  "connections": {
+    "JSON File": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "workfow_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "found in github": {
+      "main": [
+        [
+          {
+            "node": "GitHubGetAFile",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "workfow_id": {
+      "main": [
+        [
+          {
+            "node": "found in github",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many workflows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get a workflow1By1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a file": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a file": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in Python (Beta)": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Code in Python (Beta)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "GithubListAllFiles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GithubListAllFiles": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHubGetAFile": {
+      "main": [
+        [
+          {
+            "node": "File Content is Changed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a workflow1By1": {
+      "main": [
+        [
+          {
+            "node": "JSON File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "File Content is Changed": {
+      "main": [
+        [
+          {
+            "node": "Edit a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "timestamp": "2025-11-19T12:19:15.257+05:30",
+          "Readable date": "November 19th 2025, 12:19:15 pm",
+          "Readable time": "12:19:15 pm",
+          "Day of week": "Wednesday",
+          "Year": "2025",
+          "Month": "November",
+          "Day of month": "19",
+          "Hour": "12",
+          "Minute": "19",
+          "Second": "15",
+          "Timezone": "Asia/Calcutta (UTC+05:30)"
+        }
+      }
+    ]
+  },
+  "versionId": "eda8ab99-68bf-4896-9c7a-72e38fe32504",
+  "versionCounter": 12,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2025-11-26T12:35:14.428Z",
+      "createdAt": "2025-11-26T12:35:14.428Z",
+      "role": "workflow:owner",
+      "workflowId": "fQMbML8I55XCwnYZ",
+      "projectId": "RKQ6wdrHJatWAgj3",
+      "project": {
+        "updatedAt": "2025-11-25T17:23:26.493Z",
+        "createdAt": "2025-11-25T17:22:52.253Z",
+        "id": "RKQ6wdrHJatWAgj3",
+        "name": "Abhishek Shetty <abhishek.shetty@brillio.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "updatedAt": "2025-11-25T17:22:52.253Z",
+            "createdAt": "2025-11-25T17:22:52.253Z",
+            "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
+            "projectId": "RKQ6wdrHJatWAgj3",
+            "user": {
+              "updatedAt": "2025-12-08T06:16:27.520Z",
+              "createdAt": "2025-11-25T17:22:51.580Z",
+              "id": "995e2903-f591-4135-bce6-1d56da5076bd",
+              "email": "abhishek.shetty@brillio.com",
+              "firstName": "Abhishek",
+              "lastName": "Shetty",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-11-25T17:23:37.714Z",
+                "personalization_survey_n8n_version": "1.119.2"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "7Q6vvn8k2umvQmGO",
+                "userActivatedAt": 1764136317576,
+                "npsSurvey": {
+                  "waitingForResponse": true,
+                  "ignoredCount": 1,
+                  "lastShownAt": 1764669283018
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-12-08",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": []
+}
