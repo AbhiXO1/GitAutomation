@@ -29,7 +29,7 @@
   "meta": null,
   "pinData": {},
   "versionId": "2fedc2fd-5230-41bb-98b9-934f810a4e6e",
-  "versionCounter": 4,
+  "versionCounter": 5,
   "triggerCount": 1,
   "shared": [
     {
@@ -53,7 +53,7 @@
             "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
             "projectId": "RKQ6wdrHJatWAgj3",
             "user": {
-              "updatedAt": "2025-12-05T16:18:26.658Z",
+              "updatedAt": "2025-12-08T06:16:27.520Z",
               "createdAt": "2025-11-25T17:22:51.580Z",
               "id": "995e2903-f591-4135-bce6-1d56da5076bd",
               "email": "abhishek.shetty@brillio.com",
@@ -77,7 +77,7 @@
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-12-05",
+              "lastActiveAt": "2025-12-08",
               "isPending": false
             }
           }
