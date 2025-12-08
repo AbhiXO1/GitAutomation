@@ -1,0 +1,395 @@
+{
+  "updatedAt": "2025-12-08T06:43:17.944Z",
+  "createdAt": "2025-12-02T09:47:07.331Z",
+  "id": "MkRPwZkSltlMwAwS",
+  "name": "RAG Agent",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        -192
+      ],
+      "id": "ac132884-b6ef-4b42-ae4a-311f3658aade",
+      "name": "When clicking ‘Execute workflow’",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "AbhiXO1",
+          "mode": "list",
+          "cachedResultName": "AbhiXO1",
+          "cachedResultUrl": "https://github.com/AbhiXO1"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "Architecture-Documents",
+          "mode": "list",
+          "cachedResultName": "Architecture-Documents",
+          "cachedResultUrl": "https://github.com/AbhiXO1/Architecture-Documents"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        192,
+        -192
+      ],
+      "id": "f33f9b98-be35-4751-afaa-bb91861d53b9",
+      "name": "List files",
+      "webhookId": "5c34c9f6-44f4-4418-bc4d-4381b5cd5a5b",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "abhishek1",
+          "mode": "list",
+          "cachedResultName": "abhishek1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        624
+      ],
+      "id": "05df45b8-58fc-40b6-930a-7990aa228b00",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "RfLEVuAZV0PaZ3HE",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        432
+      ],
+      "id": "609da7f6-1168-4b14-b9ac-b952a4ce7048",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        736
+      ],
+      "id": "3290002b-1ba9-450a-ad81-e4a88adc51c7",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rFQBfZK6zSF6Hr0O",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "You are responsible for querying and answering. Your job is to browse through RAG ",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "abhishek1",
+          "mode": "list",
+          "cachedResultName": "abhishek1"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        1536,
+        592
+      ],
+      "id": "19133333-6f05-41dc-a367-ee9ea878dc13",
+      "name": "Pinecone Vector Store2",
+      "credentials": {
+        "pineconeApi": {
+          "id": "RfLEVuAZV0PaZ3HE",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "submit ur data",
+        "formDescription": "ur Rag file",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your pdf file",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        704,
+        624
+      ],
+      "id": "80134208-3b92-4e99-bc7a-fbb97cf11b6b",
+      "name": "On form submission",
+      "webhookId": "8fb9dd41-dfef-4887-b1e9-9fcf42f27c23"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        832,
+        832
+      ],
+      "id": "f3176082-9566-4136-aa63-af5101c16cfe",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rFQBfZK6zSF6Hr0O",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1024,
+        816
+      ],
+      "id": "6b07b202-92aa-47b4-b8b2-a91a33afc730",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        544,
+        -528
+      ],
+      "id": "b1d57f74-146f-46e6-8c93-43ec142ebd96",
+      "name": "When chat message received",
+      "webhookId": "0d9456ca-dc7c-47c7-887f-0af44c57ca37",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        608
+      ],
+      "id": "62036d13-50af-45a4-84f1-8a17b6ebc7c8",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Picvr0PMEcYWg8WK",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://docs.cloud.google.com/architecture/deployment-archetypes",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        528,
+        416
+      ],
+      "id": "c9eec60e-8110-4f99-abf7-927053e6d25c",
+      "name": "HTTP Request"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "List files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        []
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "69b6a439-1d17-48cb-ae48-0382ba4e449e",
+  "versionCounter": 4,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2025-12-02T09:47:07.331Z",
+      "createdAt": "2025-12-02T09:47:07.331Z",
+      "role": "workflow:owner",
+      "workflowId": "MkRPwZkSltlMwAwS",
+      "projectId": "RKQ6wdrHJatWAgj3",
+      "project": {
+        "updatedAt": "2025-11-25T17:23:26.493Z",
+        "createdAt": "2025-11-25T17:22:52.253Z",
+        "id": "RKQ6wdrHJatWAgj3",
+        "name": "Abhishek Shetty <abhishek.shetty@brillio.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "updatedAt": "2025-11-25T17:22:52.253Z",
+            "createdAt": "2025-11-25T17:22:52.253Z",
+            "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
+            "projectId": "RKQ6wdrHJatWAgj3",
+            "user": {
+              "updatedAt": "2025-12-08T06:16:27.520Z",
+              "createdAt": "2025-11-25T17:22:51.580Z",
+              "id": "995e2903-f591-4135-bce6-1d56da5076bd",
+              "email": "abhishek.shetty@brillio.com",
+              "firstName": "Abhishek",
+              "lastName": "Shetty",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-11-25T17:23:37.714Z",
+                "personalization_survey_n8n_version": "1.119.2"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "7Q6vvn8k2umvQmGO",
+                "userActivatedAt": 1764136317576,
+                "npsSurvey": {
+                  "waitingForResponse": true,
+                  "ignoredCount": 1,
+                  "lastShownAt": 1764669283018
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": false,
+              "lastActiveAt": "2025-12-08",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": []
+}
