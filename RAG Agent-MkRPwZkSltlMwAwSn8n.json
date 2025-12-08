@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T09:34:13.475Z",
+  "updatedAt": "2025-12-08T10:00:11.125Z",
   "createdAt": "2025-12-02T09:47:07.331Z",
   "id": "MkRPwZkSltlMwAwS",
   "name": "RAG Agent",
@@ -55,17 +55,6 @@
       ],
       "id": "c4260fa0-652f-4453-85fc-eae057153d81",
       "name": "Schedule Trigger"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        1392,
-        736
-      ],
-      "id": "79882f1e-466e-4fda-b9e1-3cc69b7ecbba",
-      "name": "Simple Memory"
     }
   ],
   "connections": {
@@ -90,17 +79,6 @@
           }
         ]
       ]
-    },
-    "Simple Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "settings": {
@@ -115,8 +93,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "4f2bdae6-b29b-4935-b1e8-b7cbc411d147",
-  "versionCounter": 26,
+  "versionId": "5410e2c2-19b0-4093-a975-6cf7c7c55ab0",
+  "versionCounter": 28,
   "triggerCount": 1,
   "shared": [
     {
