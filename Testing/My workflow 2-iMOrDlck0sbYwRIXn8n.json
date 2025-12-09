@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025-12-08T10:52:36.914Z",
+  "updatedAt": "2025-12-09T11:04:26.387Z",
   "createdAt": "2025-12-05T16:25:18.759Z",
   "id": "iMOrDlck0sbYwRIX",
   "name": "My workflow 2",
@@ -19,17 +19,74 @@
       "id": "7775888c-7bc6-46ec-8b98-2dda7698c366",
       "name": "When chat message received",
       "webhookId": "1d3c1797-5b96-4699-9baa-dba1f8aa0f27"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "17805244-9966-445b-9ee3-2952f56d71c7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "1a7d87ae-f09a-45af-9eac-d15927692fbc",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "Picvr0PMEcYWg8WK",
+          "name": "Groq account"
+        }
+      }
     }
   ],
-  "connections": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {},
-  "versionId": "93c18547-3dc1-4683-83e8-81d15d88c5fd",
-  "versionCounter": 10,
+  "versionId": "2d6f2ed4-3e15-458e-8e93-95f8b134730d",
+  "versionCounter": 13,
   "triggerCount": 1,
   "shared": [
     {
@@ -53,7 +110,7 @@
             "userId": "995e2903-f591-4135-bce6-1d56da5076bd",
             "projectId": "RKQ6wdrHJatWAgj3",
             "user": {
-              "updatedAt": "2025-12-08T06:16:27.520Z",
+              "updatedAt": "2025-12-09T11:03:45.163Z",
               "createdAt": "2025-11-25T17:22:51.580Z",
               "id": "995e2903-f591-4135-bce6-1d56da5076bd",
               "email": "abhishek.shetty@brillio.com",
@@ -71,13 +128,13 @@
                 "userActivatedAt": 1764136317576,
                 "npsSurvey": {
                   "waitingForResponse": true,
-                  "ignoredCount": 1,
-                  "lastShownAt": 1764669283018
+                  "ignoredCount": 2,
+                  "lastShownAt": 1765278220740
                 }
               },
               "disabled": false,
               "mfaEnabled": false,
-              "lastActiveAt": "2025-12-08",
+              "lastActiveAt": "2025-12-09",
               "isPending": false
             }
           }
